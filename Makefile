@@ -1,3 +1,4 @@
+ROOT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 BIN_DIR = $(ROOT_DIR)/bin
 APP_DIR = /go/src/github.com/ulule/helloapp
 
