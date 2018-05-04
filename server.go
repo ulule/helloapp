@@ -13,6 +13,9 @@ import (
 
 func Run(port int) error {
 	r := chi.NewRouter()
+	r.Get("/healthz", func(w http.ResponseWriter, r *http.Request) {
+		render.Status(r, http.StatusOK)
+	})
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		render.Status(r, http.StatusOK)
 	})
