@@ -19,6 +19,16 @@ spec:
         - name: http-server
           containerPort: 8080
 
+        readinessProbe:
+          httpGet:
+            path: /sys/health
+            port: 8080
+
+        livenessProbe:
+          httpGet:
+            path: /sys/health
+            port: 8080
+
 ---
 
 apiVersion: v1

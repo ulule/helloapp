@@ -7,6 +7,18 @@ commit = $(shell git log --pretty=format:'%h' -n 1)
 now = $(shell date "+%Y-%m-%d %T UTC%z")
 compiler = $(shell go version)
 
+build:
+	@(echo "-> Compiling helloapp binary")
+	@(mkdir -p $(BIN_DIR))
+	@(go build -o $(BIN_DIR)/helloapp ./cmd/main.go)
+	@(echo "-> helloapp binary created")
+
+run:
+	bin/helloapp
+
+live:
+	@modd
+
 build-static:
 	@(echo "-> Creating statically linked binary...")
 	@(mkdir -p $(BIN_DIR))
