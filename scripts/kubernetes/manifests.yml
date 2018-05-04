@@ -41,8 +41,8 @@ spec:
   type: NodePort
   externalTrafficPolicy: Local
   ports:
-  - port: 8080
-    targetPort: http-server
+    - port: 80
+      targetPort: http-server
   selector:
     app: helloapp
 
@@ -55,4 +55,4 @@ metadata:
 spec:
   backend:
     serviceName: helloapp
-    servicePort: 8080
+    servicePort: 80
