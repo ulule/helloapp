@@ -1,0 +1,7 @@
+FROM golang:1.10.2
+
+ADD . /go/src/github.com/ulule/helloapp
+
+WORKDIR /go/src/github.com/ulule/helloapp
+
+CMD make build-static
