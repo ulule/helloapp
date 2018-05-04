@@ -7,9 +7,15 @@
   revision = "e83ac2304db3c50cf03d96a2fcd39009d458bc35"
   version = "v3.3.2"
 
+[[projects]]
+  name = "github.com/go-chi/render"
+  packages = ["."]
+  revision = "9f855fadd4b8cde7773f9ef51f6b2705af239519"
+  version = "v1.0.0"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "3be2afefb3da733da226f2d2f10775fbd5884b4890cd2b8300894215c71a8f40"
+  inputs-digest = "4fabf6280cbff6c14afa5e83b7822dbe3aa82ce567a05f01a63b6665b7940e85"
   solver-name = "gps-cdcl"
   solver-version = 1
