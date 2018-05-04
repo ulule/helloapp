@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: helloapp
-        image: gcr.io/ulule-services/helloapp:${HELLOAPP_VERSION}
+        image: gcr.io/${GCLOUD_PROJECT_ID}/helloapp:${HELLOAPP_VERSION}
         imagePullPolicy: Always
         ports:
         - name: http-server
