@@ -5,6 +5,11 @@ metadata:
   labels:
     app: helloapp
 spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   replicas: 3
   template:
     metadata:
