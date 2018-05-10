@@ -48,6 +48,23 @@ spec:
 
 ---
 
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloapp-lb
+  labels:
+    app: helloapp
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+    - port: 80
+      targetPort: http-server
+  selector:
+    app: helloapp
+
+---
+
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
