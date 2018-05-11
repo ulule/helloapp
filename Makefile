@@ -10,7 +10,11 @@ compiler = $(shell go version)
 build:
 	@(echo "-> Compiling helloapp binary")
 	@(mkdir -p $(BIN_DIR))
-	@(go build -o $(BIN_DIR)/helloapp ./cmd/main.go)
+	@(go build -ldflags "\
+		-X 'github.com/ulule/helloapp.Branch=$(branch)' \
+		-X 'github.com/ulule/helloapp.Revision=$(commit)' \
+		-X 'github.com/ulule/helloapp.BuildTime=$(now)' \
+		-X 'github.com/ulule/helloapp.Compiler=$(compiler)'" -o $(BIN_DIR)/helloapp ./cmd/main.go)
 	@(echo "-> helloapp binary created")
 
 run:
@@ -23,10 +27,10 @@ build-static:
 	@(echo "-> Creating statically linked binary...")
 	@(mkdir -p $(BIN_DIR))
 	@(CGO_ENABLED=0 go build -ldflags "\
-		-X 'helloapp.Branch=$(branch)' \
-		-X 'helloapp.Revision=$(commit)' \
-		-X 'helloapp.BuildTime=$(now)' \
-		-X 'helloapp.Compiler=$(compiler)'" -a -installsuffix cgo -o $(BIN_DIR)/helloapp ./cmd/main.go)
+		-X 'github.com/ulule/helloapp.Branch=$(branch)' \
+		-X 'github.com/ulule/helloapp.Revision=$(commit)' \
+		-X 'github.com/ulule/helloapp.BuildTime=$(now)' \
+		-X 'github.com/ulule/helloapp.Compiler=$(compiler)'" -a -installsuffix cgo -o $(BIN_DIR)/helloapp ./cmd/main.go)
 
 
 docker-build:
