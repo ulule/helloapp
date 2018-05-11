@@ -4,40 +4,15 @@ import (
 	"context"
 	"fmt"
 	"net/http"
-	"os"
 	"strconv"
 
 	"github.com/go-chi/chi"
-	"github.com/go-chi/render"
+	"github.com/go-chi/chi/middleware"
 )
-
-func healthcheck(w http.ResponseWriter, r *http.Request) {
-	headers := map[string]string{}
-
-	for k, v := range r.Header {
-		if k == "Cookie" {
-			continue
-		}
-
-		headers[k] = v[0]
-	}
-
-	host, _ := os.Hostname()
-
-	render.DefaultResponder(w, r, render.M{
-		"remote_addr": r.RemoteAddr,
-		"host":        host,
-		"headers":     headers,
-		"status":      "OK",
-		"version":     Version,
-		"revision":    Revision,
-		"build_time":  BuildTime,
-		"compiler":    Compiler,
-	})
-}
 
 func Run(port int) error {
 	r := chi.NewRouter()
+	r.Use(middleware.RealIP)
 	r.Get("/healthz", healthcheck)
 	r.Get("/", healthcheck)
 	r.Get("/sys/health", healthcheck)
