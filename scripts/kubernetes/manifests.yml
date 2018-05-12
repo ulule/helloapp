@@ -28,14 +28,21 @@ spec:
           httpGet:
             path: /sys/health
             port: 8080
-          initialDelaySeconds: 5
+          initialDelaySeconds: 20
+          timeoutSeconds: 4
           periodSeconds: 5
-          successThreshold: 1
+          failureThreshold: 1
+          successThreshold: 2
 
         livenessProbe:
           httpGet:
             path: /sys/health
             port: 8080
+          initialDelaySeconds: 20
+          timeoutSeconds: 2
+          periodSeconds: 2
+          failureThreshold: 5
+          successThreshold: 1
 
 ---
 
