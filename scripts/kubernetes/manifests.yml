@@ -8,7 +8,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 0
+      maxUnavailable: 25%
       maxSurge: 1
   replicas: 3
   template:
@@ -64,6 +64,7 @@ metadata:
     app: helloapp
 spec:
   type: LoadBalancer
+  loadBalancerIP: ${HELLOAPP_SERVICE_STATIC_IP}
   externalTrafficPolicy: Local
   ports:
     - port: 80
