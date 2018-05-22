@@ -2,6 +2,12 @@
 
 
 [[projects]]
+  name = "github.com/TV4/graceful"
+  packages = ["."]
+  revision = "38c3c4980bed6ed0aac95529c2cded4986e0e2a8"
+  version = "v0.3.3"
+
+[[projects]]
   name = "github.com/go-chi/chi"
   packages = [
     ".",
@@ -16,15 +22,9 @@
   revision = "9f855fadd4b8cde7773f9ef51f6b2705af239519"
   version = "v1.0.0"
 
-[[projects]]
-  branch = "master"
-  name = "github.com/go-chi/valve"
-  packages = ["."]
-  revision = "9e45288364f420dd8e094fab4f64437fca5245a6"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "826cd9d78c4f2c4d38813bc0adf4bab656c2d36e3666bd94703f9abb8c8aa501"
+  inputs-digest = "181b131e616b271d74ce8470cb81dbcd92d30dff3d33e80bc1958d685bdadb95"
   solver-name = "gps-cdcl"
   solver-version = 1
