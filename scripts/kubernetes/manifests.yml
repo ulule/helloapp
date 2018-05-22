@@ -8,7 +8,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 25%
+      maxUnavailable: 50%
       maxSurge: 1
   replicas: 3
   template:
@@ -28,7 +28,7 @@ spec:
           httpGet:
             path: /sys/health
             port: 8080
-          initialDelaySeconds: 20
+          initialDelaySeconds: 5
           timeoutSeconds: 4
           periodSeconds: 5
           failureThreshold: 1
@@ -38,7 +38,7 @@ spec:
           httpGet:
             path: /sys/health
             port: 8080
-          initialDelaySeconds: 20
+          initialDelaySeconds: 5
           timeoutSeconds: 2
           periodSeconds: 2
           failureThreshold: 5
@@ -49,7 +49,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: helloapp
+  name: helloapp-svc
   labels:
     app: helloapp
 spec:
