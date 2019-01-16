@@ -1,0 +1,6 @@
+github.com/TV4/graceful v0.3.4 h1:Rp9PUwTMIW8m3rsEMkiq9JM6+ldBZIfLXn+hYTjenQs=
+github.com/TV4/graceful v0.3.4/go.mod h1:FCdf8hfXvxOSAQy0C0dBTCSCuMgowS++HzwYL7TIjf4=
+github.com/go-chi/chi v4.0.0+incompatible h1:SiLLEDyAkqNnw+T/uDTf3aFB9T4FTrwMpuYrgaRcnW4=
+github.com/go-chi/chi v4.0.0+incompatible/go.mod h1:eB3wogJHnLi3x/kFX2A+IbTBlXxmMeXJVKy9tTv1XzQ=
+github.com/go-chi/render v1.0.1 h1:4/5tis2cKaNdnv9zFLfXzcquC9HbeZgCnxGnKrltBS8=
+github.com/go-chi/render v1.0.1/go.mod h1:pq4Rr7HbnsdaeHagklXub+p6Wd16Af5l9koip1OvJns=

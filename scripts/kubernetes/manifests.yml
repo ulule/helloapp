@@ -11,10 +11,12 @@ spec:
       maxUnavailable: 50%
       maxSurge: 1
   replicas: 3
+  minReadySeconds: 30
   template:
     metadata:
       labels:
         app: helloapp
+        version: "0.1"
     spec:
       containers:
       - name: helloapp

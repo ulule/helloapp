@@ -1,3 +1,5 @@
+export GO111MODULE=on
+
 ROOT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 BIN_DIR = $(ROOT_DIR)/bin
 APP_DIR = /go/src/github.com/ulule/helloapp
@@ -10,7 +12,7 @@ compiler = $(shell go version)
 build:
 	@(echo "-> Compiling helloapp binary")
 	@(mkdir -p $(BIN_DIR))
-	@(go build -ldflags "\
+	@(go build -mod=vendor -ldflags "\
 		-X 'github.com/ulule/helloapp.Branch=$(branch)' \
 		-X 'github.com/ulule/helloapp.Revision=$(commit)' \
 		-X 'github.com/ulule/helloapp.BuildTime=$(now)' \
@@ -26,12 +28,14 @@ live:
 build-static:
 	@(echo "-> Creating statically linked binary...")
 	@(mkdir -p $(BIN_DIR))
-	@(CGO_ENABLED=0 go build -ldflags "\
+	@(CGO_ENABLED=0 go build -mod=vendor -ldflags "\
 		-X 'github.com/ulule/helloapp.Branch=$(branch)' \
 		-X 'github.com/ulule/helloapp.Revision=$(commit)' \
 		-X 'github.com/ulule/helloapp.BuildTime=$(now)' \
 		-X 'github.com/ulule/helloapp.Compiler=$(compiler)'" -a -installsuffix cgo -o $(BIN_DIR)/helloapp ./cmd/main.go)
 
+dump-vendor:
+	@(go mod vendor)
 
 docker-build:
 	@(echo "-> Preparing builder...")
